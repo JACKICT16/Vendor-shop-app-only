@@ -1,6 +1,9 @@
 # vendor_app_only
 
 A new Flutter project.
+ ได้สร้างหน้า Vendor ไว้สำหรับแม่ค้าพ่อค้า
+       โดยทำการสร้างหน้า auth โดยใช้ Package firebase_ui_auth: ^1.7.0
+        และเรียกใช้หน้า sigm in   sign Out ได้เลย
 
 ## Getting Started
 
