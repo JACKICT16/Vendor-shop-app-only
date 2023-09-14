@@ -25,7 +25,6 @@ class _VendorAuthScreenState extends State<VendorAuthScreen> {
             ],
           );
         }
-
         return LandingScreen();
       },
     );
