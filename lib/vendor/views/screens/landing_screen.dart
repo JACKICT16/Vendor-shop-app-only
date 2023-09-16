@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vendor_app_only/models/vendor_user_model.dart';
+import 'package:vendor_app_only/vendor/views/auth/vendor_registrarion_screen.dart';
+import 'package:vendor_app_only/vendor/views/screens/main_vendor_screen.dart';
+import 'package:vendor_app_only/vendor/views/screens/vendorMapScreen.dart';
 
 class LandingScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -21,13 +24,61 @@ class LandingScreen extends StatelessWidget {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Text("Loading");
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
+
+          if (!snapshot.data!.exists) {
+            return VendorRegistrationScreen();
+          }
+
           VendorUserModel vendorUserModel = VendorUserModel.fromJson(
               snapshot.data!.data() as Map<String, dynamic>);
+          if (vendorUserModel.approved == true) {
+            return MainVendorScreen();
+          }
           return Center(
-            child: Text(
-              vendorUserModel.shopName,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(6),
+                  child: Image.network(
+                    vendorUserModel.storeImage,
+                    width: 90,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  vendorUserModel.shopName,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Your Application, has been send to shop admin\nadmin will get back to you soon',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextButton(
+                    onPressed: () async {
+                      await _auth.signOut();
+                    },
+                    child: Text('Sign out'))
+              ],
             ),
           );
         },
