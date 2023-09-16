@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vendor_app_only/vendor/views/screens/earnings_screen.dart';
+import 'package:vendor_app_only/vendor/views/screens/edit_screen.dart';
+import 'package:vendor_app_only/vendor/views/screens/logout_screen.dart';
+import 'package:vendor_app_only/vendor/views/screens/upload_screen.dart';
 
 class MainVendorScreen extends StatefulWidget {
   const MainVendorScreen({super.key});
@@ -10,6 +14,12 @@ class MainVendorScreen extends StatefulWidget {
 
 class _MainVendorScreenState extends State<MainVendorScreen> {
   int _pageIndex = 0;
+  List<Widget> _pages = [
+    EaringScreen(),
+    UploadScreen(),
+    EditProductScreen(),
+    LogoutScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,6 +58,7 @@ class _MainVendorScreenState extends State<MainVendorScreen> {
           ),
         ],
       ),
+      body: _pages[_pageIndex],
     );
   }
 }
