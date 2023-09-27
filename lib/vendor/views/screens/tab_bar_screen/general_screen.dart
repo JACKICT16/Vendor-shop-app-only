@@ -8,7 +8,10 @@ class GeneralScreen extends StatefulWidget {
   State<GeneralScreen> createState() => _GeneralScreenState();
 }
 
-class _GeneralScreenState extends State<GeneralScreen> {
+class _GeneralScreenState extends State<GeneralScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final List<String> _categoryList = [];
 
@@ -33,6 +36,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final ProductProvider _productProvider =
         Provider.of<ProductProvider>(context);
     return Scaffold(
@@ -42,6 +46,13 @@ class _GeneralScreenState extends State<GeneralScreen> {
           child: Column(
             children: [
               TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Enter menu Name';
+                  } else {
+                    return null;
+                  }
+                },
                 onChanged: (value) {
                   _productProvider.getFormData(menuName: value);
                 },
@@ -56,6 +67,13 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 height: 16,
               ),
               TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Enter menu Price';
+                  } else {
+                    return null;
+                  }
+                },
                 onChanged: (value) {
                   _productProvider.getFormData(menuPrice: double.parse(value));
                 },
@@ -90,6 +108,13 @@ class _GeneralScreenState extends State<GeneralScreen> {
                 height: 16,
               ),
               TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Enter menu Description';
+                  } else {
+                    return null;
+                  }
+                },
                 onChanged: (value) {
                   _productProvider.getFormData(description: value);
                 },

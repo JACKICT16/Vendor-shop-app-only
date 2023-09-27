@@ -8,6 +8,7 @@ class ProductProvider with ChangeNotifier {
     double? menuPrice,
     String? description,
     String? categories,
+    List<String>? imageUrlList,
   }) {
     if (menuName != null) {
       productData['menuName'] = menuName;
@@ -21,6 +22,14 @@ class ProductProvider with ChangeNotifier {
     if (description != null) {
       productData['description'] = description;
     }
+    if (imageUrlList != null) {
+      productData['imageUrlList'] = imageUrlList;
+    }
+    notifyListeners();
+  }
+
+  clearData() {
+    productData.clear();
     notifyListeners();
   }
 }
