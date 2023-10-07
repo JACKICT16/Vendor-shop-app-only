@@ -24,9 +24,9 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
   late String shopName;
   late String emailAddress;
   late String phoneNumber;
-  late String countryValue;
-  late String stateValue;
-  late String cityValue;
+  // late String countryValue;
+  // late String stateValue;
+  // late String cityValue;
 
   selectGalleryImage() async {
     Uint8List im = await _vendorController.pickStoreImage(ImageSource.gallery);
@@ -152,23 +152,23 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
                         ),
                       ),
                     ),
-                    SelectState(
-                      onCountryChanged: (value) {
-                        setState(() {
-                          countryValue = value;
-                        });
-                      },
-                      onStateChanged: (value) {
-                        setState(() {
-                          stateValue = value;
-                        });
-                      },
-                      onCityChanged: (value) {
-                        setState(() {
-                          cityValue = value;
-                        });
-                      },
-                    ),
+                    // SelectState(
+                    //   onCountryChanged: (value) {
+                    //     setState(() {
+                    //       countryValue = value;
+                    //     });
+                    //   },
+                    //   onStateChanged: (value) {
+                    //     setState(() {
+                    //       stateValue = value;
+                    //     });
+                    //   },
+                    //   onCityChanged: (value) {
+                    //     setState(() {
+                    //       cityValue = value;
+                    //     });
+                    //   },
+                    // ),
                   ],
                 ),
               ),
@@ -183,8 +183,8 @@ class _VendorRegistrationScreenState extends State<VendorRegistrationScreen> {
             if (_formKey.currentState!.validate()) {
               EasyLoading.show(status: 'Please Wait');
               _vendorController
-                  .vendorRegistrationForm(shopName, emailAddress, phoneNumber,
-                      countryValue, stateValue, cityValue, _image)
+                  .vendorRegistrationForm(
+                      shopName, emailAddress, phoneNumber, _image)
                   .whenComplete(() {
                 EasyLoading.dismiss();
               });

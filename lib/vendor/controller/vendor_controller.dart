@@ -44,9 +44,9 @@ class VendorController {
       String shopName,
       String emailAddress,
       String phoneNumber,
-      String countryValue,
-      String stateValue,
-      String cityValue,
+      // String countryValue,
+      // String stateValue,
+      // String cityValue,
       Uint8List? image) async {
     String res = 'something went wrong';
     try {
@@ -56,11 +56,12 @@ class VendorController {
         'storeImage': downloadUrl,
         'emailAddress': emailAddress,
         'phoneNumber': phoneNumber,
-        'countryValue': countryValue,
-        'stateValue': stateValue,
-        'cityValue': cityValue,
+        // 'countryValue': countryValue,
+        // 'stateValue': stateValue,
+        // 'cityValue': cityValue,
         'vendorId': _auth.currentUser!.uid,
-        'approved': false,
+        'approved': true,
+        'status': false,
       });
 
       res = 'success';

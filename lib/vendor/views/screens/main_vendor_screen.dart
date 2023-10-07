@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vendor_app_only/vendor/views/screens/account_screen.dart';
-import 'package:vendor_app_only/vendor/views/screens/earnings_screen.dart';
+import 'package:vendor_app_only/vendor/views/screens/status_screen.dart';
 import 'package:vendor_app_only/vendor/views/screens/edit_screen.dart';
 import 'package:vendor_app_only/vendor/views/screens/logout_screen.dart';
 import 'package:vendor_app_only/vendor/views/screens/upload_screen.dart';
@@ -16,7 +16,7 @@ class MainVendorScreen extends StatefulWidget {
 class _MainVendorScreenState extends State<MainVendorScreen> {
   int _pageIndex = 0;
   List<Widget> _pages = [
-    EaringScreen(),
+    StatusScreen(),
     UploadScreen(),
     EditProductScreen(),
     AccountScreen(),
@@ -37,8 +37,8 @@ class _MainVendorScreenState extends State<MainVendorScreen> {
         selectedItemColor: Colors.blue[700],
         items: [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.money_dollar),
-            label: 'Earnings',
+            icon: Icon(Icons.smart_toy_sharp),
+            label: 'Status',
           ),
           BottomNavigationBarItem(
             icon: Icon(
