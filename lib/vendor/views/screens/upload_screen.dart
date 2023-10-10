@@ -60,6 +60,8 @@ class UploadScreen extends StatelessWidget {
               final menuId = Uuid().v4();
               if (_formKey.currentState!.validate()) {
                 EasyLoading.show(status: 'Uploading');
+                final menuQuantity = 1;
+                final quantity = 1;
                 await _firestore.collection('menu').doc(menuId).set({
                   'menuId': menuId,
                   'menuName': _productProvider.productData['menuName'],
@@ -71,13 +73,9 @@ class UploadScreen extends StatelessWidget {
                       (userDoc.data() as Map<String, dynamic>)['shopName'],
                   'storeImage':
                       (userDoc.data() as Map<String, dynamic>)['storeImage'],
-                  'countryValue':
-                      (userDoc.data() as Map<String, dynamic>)['countryValue'],
-                  'cityValue':
-                      (userDoc.data() as Map<String, dynamic>)['cityValue'],
-                  'stateValue':
-                      (userDoc.data() as Map<String, dynamic>)['stateValue'],
                   'vendorId': _auth.currentUser!.uid,
+                  'menuQuantity': menuQuantity,
+                  'quantity': quantity,
                 }).whenComplete(() {
                   EasyLoading.dismiss();
                   _productProvider.clearData();

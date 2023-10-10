@@ -9,6 +9,8 @@ class ProductProvider with ChangeNotifier {
     String? description,
     String? categories,
     List<String>? imageUrlList,
+    int? quantity,
+    int? menuQuantity,
   }) {
     if (menuName != null) {
       productData['menuName'] = menuName;
