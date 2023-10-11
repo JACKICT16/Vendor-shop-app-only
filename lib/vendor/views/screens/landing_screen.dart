@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:vendor_app_only/models/vendor_user_model.dart';
 import 'package:vendor_app_only/vendor/views/auth/vendor_registrarion_screen.dart';
 import 'package:vendor_app_only/vendor/views/screens/main_vendor_screen.dart';
-import 'package:vendor_app_only/vendor/views/screens/vendorMapScreen.dart';
 
 class LandingScreen extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
